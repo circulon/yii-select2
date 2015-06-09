@@ -31,7 +31,7 @@ class Select2 extends CInputWidget
     /** Initiialize method to publish assets */
     public function init()
     {
-        $dir = dirname(__FILE__) . '/components';
+        $dir = Yii::app()->basePath . '/../vendorAssets';
         $this->assetsDir = Yii::app()->assetManager->publish($dir);
 
         if ($this->multiple) {
