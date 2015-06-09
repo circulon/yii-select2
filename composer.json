@@ -1,3 +1,6 @@
 {
-	"name": "subdee/yii-select2"
+  "name": "subdee/yii-select2",
+  "require": {
+    "select2/select2": "4.0.*"
+  }
 }
