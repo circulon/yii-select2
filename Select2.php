@@ -31,7 +31,7 @@ class Select2 extends CInputWidget
     /** Initiialize method to publish assets */
     public function init()
     {
-        $dir = Yii::app()->basePath . '/../vendorAssets';
+        $dir = dirname(__FILE__) . '/assets';
         $this->assetsDir = Yii::app()->assetManager->publish($dir);
 
         if ($this->multiple) {
@@ -93,18 +93,15 @@ class Select2 extends CInputWidget
     private function registerScripts($id)
     {
         $cs = Yii::app()->getClientScript();
-        //$cs->registerCoreScript('jquery');
 
-        $src = !YII_DEBUG ? '' : '/select2/dist';
-
-        $cs->registerCssFile($this->assetsDir . $src . '/css/select2.css');
-        $cs->registerScriptFile($this->assetsDir . $src . '/js//select2.js');
+        $cs->registerCssFile($this->assetsDir . '/select2.min.css');
+        $cs->registerScriptFile($this->assetsDir . '/select2.full.min.js');
 
         $lang = strtoupper(str_replace('_', '-', Yii::app()->language));
         $lang[0] = strtolower($lang[0]);
         $lang[1] = strtolower($lang[1]);
 
-        $cs->registerScriptFile($this->assetsDir . $src . '/js/i18n/' . $lang . '.js');
+        $cs->registerScriptFile($this->assetsDir . '/i18n/' . $lang . '.js');
         
         $settings = CJavaScript::encode($this->settings);
         
